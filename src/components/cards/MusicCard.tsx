@@ -3,13 +3,13 @@ import type { Clip } from "@/lib/types";
 
 export default function MusicCard({ clip }: { clip: Clip }) {
   return (
-    <div className="group flex h-full flex-col overflow-hidden rounded-xl bg-bg-card transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_#FF6EC720]">
+    <div className="group flex h-full flex-col overflow-hidden rounded-xl bg-bg-card/60 backdrop-blur-xl border border-white/[0.06] transition-all hover:shadow-[0_0_20px_#FF6EC720]">
       <div className="relative min-h-0 flex-1 w-full overflow-hidden">
         {clip.thumbnail_url ? (
           <img
             src={clip.thumbnail_url}
             alt={clip.title}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover opacity-50 transition-opacity duration-300 group-hover:opacity-100"
           />
         ) : (
           <div className="h-full w-full bg-bg-elevated" />

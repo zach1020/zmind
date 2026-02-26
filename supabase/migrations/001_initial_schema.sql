@@ -86,5 +86,6 @@ CREATE TRIGGER conversations_updated_at
   BEFORE UPDATE ON chat_conversations
   FOR EACH ROW EXECUTE FUNCTION update_updated_at();
 
--- Storage bucket (run via Supabase dashboard or API)
+-- Storage buckets (run via Supabase dashboard or API)
 -- INSERT INTO storage.buckets (id, name, public) VALUES ('clip-archives', 'clip-archives', false);
+-- INSERT INTO storage.buckets (id, name, public) VALUES ('clip-thumbnails', 'clip-thumbnails', true);

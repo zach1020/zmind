@@ -37,6 +37,23 @@ async function uploadArchive(apiUrl, apiKey, clipId, html) {
   return res.json();
 }
 
+async function uploadThumbnail(apiUrl, apiKey, clipId, dataUrl) {
+  const res = await fetch(`${apiUrl}/api/clips/${clipId}/thumbnail`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": apiKey,
+    },
+    body: JSON.stringify({ image: dataUrl }),
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to upload thumbnail");
+  }
+
+  return res.json();
+}
+
 async function autoTag(apiUrl, apiKey, clipId) {
   try {
     const res = await fetch(`${apiUrl}/api/autotag`, {

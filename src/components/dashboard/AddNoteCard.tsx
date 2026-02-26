@@ -38,7 +38,7 @@ export default function AddNoteCard({ onNoteAdded }: AddNoteCardProps) {
   }
 
   return (
-    <div className="w-[280px] shrink-0 rounded-xl border border-border-subtle bg-bg-card p-4">
+    <div className="w-full rounded-xl border border-white/[0.06] bg-bg-card/60 backdrop-blur-xl p-4">
       <p className="font-body text-[11px] font-bold tracking-[1px] text-accent-pink">
         ADD A NEW NOTE
       </p>

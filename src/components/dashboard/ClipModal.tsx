@@ -80,6 +80,15 @@ export default function ClipModal({ clip, onClose, onDeleted }: ClipModalProps) 
         </div>
 
         <div className="max-h-[75vh] overflow-y-auto p-4">
+          {clip.thumbnail_url && (
+            <div className="mb-4 overflow-hidden rounded-lg">
+              <img
+                src={clip.thumbnail_url}
+                alt={clip.title}
+                className="w-full max-h-[300px] object-cover"
+              />
+            </div>
+          )}
           {clip.archive_path ? (
             <iframe
               src={`/api/clips/archive?path=${encodeURIComponent(clip.archive_path)}`}

@@ -77,12 +77,7 @@ export default function DashboardPage() {
       />
 
       <div className="flex flex-1 flex-col gap-4 overflow-hidden px-8 pb-8">
-        <div className="flex items-start gap-4">
-          <div className="flex-1">
-            <AddClipBar onClipAdded={refetch} />
-          </div>
-          <AddNoteCard onNoteAdded={refetch} />
-        </div>
+        <AddClipBar onClipAdded={refetch} />
 
         {loading ? (
           <div className="flex flex-1 items-center justify-center">
@@ -95,6 +90,7 @@ export default function DashboardPage() {
             onClipDelete={handleDelete}
             onToggleFavorite={handleToggleFavorite}
             onSendToVault={handleToggleVault}
+            noteCard={<AddNoteCard onNoteAdded={refetch} />}
           />
         )}
       </div>

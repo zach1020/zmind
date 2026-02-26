@@ -2,7 +2,7 @@ import type { Clip } from "@/lib/types";
 
 export default function QuoteCard({ clip }: { clip: Clip }) {
   return (
-    <div className="group flex h-full flex-col gap-2.5 overflow-hidden rounded-xl border border-[#A855F730] bg-gradient-to-br from-bg-elevated to-[#2D1B69] p-4 transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_#A855F730]">
+    <div className="group flex h-full flex-col gap-2.5 overflow-hidden rounded-xl border border-[#A855F730] bg-gradient-to-br from-bg-elevated/60 to-[#2D1B69]/60 backdrop-blur-xl p-4 transition-all hover:shadow-[0_0_20px_#A855F730]">
       <span className="font-heading text-[32px] font-extrabold leading-none text-accent-purple">
         &ldquo;
       </span>

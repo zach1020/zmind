@@ -53,7 +53,7 @@ export default function ClipCard({ clip, onClick, onDelete, onToggleFavorite, on
 
   return (
     <div
-      className="group/card animate-fade-in-up relative cursor-pointer break-inside-avoid rounded-xl p-[2px] transition-all duration-300 hover:neon-border"
+      className="group/card animate-fade-in-up relative z-0 cursor-pointer break-inside-avoid rounded-xl p-[2px] transition-all duration-300 hover:z-20 hover:scale-[1.05] hover:neon-border"
       onClick={onClick}
     >
       <div className={`relative rounded-[10px] overflow-hidden ${sizeClass[clip.type] || "h-[200px]"}`}>
