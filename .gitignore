@@ -37,6 +37,7 @@ yarn-error.log*
 # local assets (not part of the project)
 /images/
 /zmindUI
+screen_recording.mov
 
 # vercel
 .vercel
