@@ -3,8 +3,8 @@ import type { Clip } from "@/lib/types";
 
 export default function VideoCard({ clip }: { clip: Clip }) {
   return (
-    <div className="group overflow-hidden rounded-xl bg-bg-card transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_#FF6EC720]">
-      <div className="relative h-[140px] w-full overflow-hidden">
+    <div className="group flex h-full flex-col overflow-hidden rounded-xl bg-bg-card transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_#FF6EC720]">
+      <div className="relative min-h-0 flex-1 w-full overflow-hidden">
         {clip.thumbnail_url ? (
           <img
             src={clip.thumbnail_url}

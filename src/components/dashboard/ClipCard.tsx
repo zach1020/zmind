@@ -34,6 +34,20 @@ const cardMap: Record<string, React.ComponentType<{ clip: Clip }>> = {
   website: WebsiteCard,
 };
 
+// Three consistent size tiers for masonry
+const sizeClass: Record<string, string> = {
+  bookmark: "h-[100px]",
+  tool: "h-[100px]",
+  price: "h-[100px]",
+  article: "h-[200px]",
+  note: "h-[200px]",
+  quote: "h-[200px]",
+  website: "h-[200px]",
+  video: "h-[280px]",
+  image: "h-[280px]",
+  music: "h-[280px]",
+};
+
 export default function ClipCard({ clip, onClick, onDelete, onToggleFavorite, onSendToVault }: ClipCardProps) {
   const Card = cardMap[clip.type] || BookmarkCard;
 
@@ -42,7 +56,7 @@ export default function ClipCard({ clip, onClick, onDelete, onToggleFavorite, on
       className="group/card animate-fade-in-up relative cursor-pointer break-inside-avoid rounded-xl p-[2px] transition-all duration-300 hover:neon-border"
       onClick={onClick}
     >
-      <div className="relative rounded-[10px] overflow-hidden">
+      <div className={`relative rounded-[10px] overflow-hidden ${sizeClass[clip.type] || "h-[200px]"}`}>
       <Card clip={clip} />
 
       {/* Vault badge */}
