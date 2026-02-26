@@ -9,9 +9,8 @@ Save links, notes, and full-page archives. Chat with your collection using Claud
 ![Supabase](https://img.shields.io/badge/Supabase-Postgres-green)
 ![Claude](https://img.shields.io/badge/Claude-AI_Chat-orange)
 
-https://github.com/user-attachments/assets/demo.mp4
 
-<video src="demo.mp4" width="100%" autoplay loop muted></video>
+<img width="2046" height="970" alt="Screenshot 2026-02-26 at 3 47 59 AM" src="https://github.com/user-attachments/assets/ab94ef85-d684-4756-a3db-226c221edf0b" />
 
 ## Features
 
