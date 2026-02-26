@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 320px;
+      min-height: 200px;
+      background: #0A0A12;
+      color: #EAEAF2;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      padding: 20px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #FF6EC7, #7B68EE);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      color: white;
+    }
+    .title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .page-title {
+      font-size: 13px;
+      color: #8888AA;
+      margin-bottom: 16px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .clip-btn {
+      width: 100%;
+      height: 44px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #A855F7, #FF6EC7);
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .clip-btn:hover { opacity: 0.9; }
+    .clip-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .status {
+      margin-top: 12px;
+      font-size: 12px;
+      text-align: center;
+    }
+    .status.loading { color: #00E5FF; }
+    .status.success { color: #4ade80; }
+    .status.error { color: #FF6EC7; }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .tag {
+      background: #A855F733;
+      color: #A855F7;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .settings-link {
+      display: block;
+      margin-top: 16px;
+      text-align: center;
+      font-size: 11px;
+      color: #555570;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .settings-link:hover { color: #8888AA; }
+    .settings-panel {
+      display: none;
+      margin-top: 12px;
+    }
+    .settings-panel.visible { display: block; }
+    .settings-panel input {
+      width: 100%;
+      background: #1A1A2E;
+      border: 1px solid #2A2A40;
+      border-radius: 8px;
+      padding: 8px 10px;
+      color: #EAEAF2;
+      font-size: 12px;
+      margin-bottom: 8px;
+      outline: none;
+    }
+    .settings-panel input:focus { border-color: #A855F7; }
+    .settings-panel label {
+      font-size: 11px;
+      color: #8888AA;
+      display: block;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">Z</div>
+    <div class="title">ZMind</div>
+  </div>
+
+  <div id="pageTitle" class="page-title">Loading...</div>
+
+  <button id="clipBtn" class="clip-btn">Clip This Page</button>
+
+  <div id="status" class="status"></div>
+  <div id="tagsContainer" class="tags"></div>
+
+  <a id="settingsToggle" class="settings-link">Settings</a>
+
+  <div id="settingsPanel" class="settings-panel">
+    <label>API URL</label>
+    <input id="apiUrl" type="text" placeholder="http://localhost:3000">
+    <label>API Key</label>
+    <input id="apiKey" type="password" placeholder="your-api-key">
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

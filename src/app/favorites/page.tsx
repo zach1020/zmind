@@ -1,36 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { Bookmark } from "lucide-react";
 import AppShell from "@/components/layout/AppShell";
-import TopBar from "@/components/layout/TopBar";
-import AddClipBar from "@/components/dashboard/AddClipBar";
-import AddNoteCard from "@/components/dashboard/AddNoteCard";
 import MasonryGrid from "@/components/dashboard/MasonryGrid";
 import ClipModal from "@/components/dashboard/ClipModal";
 import { useClips } from "@/hooks/useClips";
-import { useSearch } from "@/hooks/useSearch";
 import type { Clip } from "@/lib/types";
 
 import { API_KEY } from "@/lib/config";
 
-type Tab = "everything" | "chat";
-
-export default function DashboardPage() {
-  const router = useRouter();
-  const [activeTab, setActiveTab] = useState<Tab>("everything");
-  const { query, setQuery, debouncedQuery } = useSearch();
+export default function FavoritesPage() {
+  const { clips, loading, refetch } = useClips(undefined, false, true);
   const [selectedClip, setSelectedClip] = useState<Clip | null>(null);
-
-  const { clips, loading, refetch } = useClips(debouncedQuery || undefined);
-
-  function handleTabChange(tab: Tab) {
-    if (tab === "chat") {
-      router.push("/chat");
-      return;
-    }
-    setActiveTab(tab);
-  }
 
   async function handleDelete(clip: Clip) {
     if (!confirm(`Delete "${clip.title}"?`)) return;
@@ -53,40 +35,43 @@ export default function DashboardPage() {
     refetch();
   }
 
-  async function handleToggleVault(clip: Clip) {
+  async function handleSendToVault(clip: Clip) {
     const res = await fetch("/api/clips/vault", {
-      method: clip.archive_path ? "DELETE" : "POST",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         "x-api-key": API_KEY,
       },
       body: JSON.stringify({ clip_id: clip.id }),
     });
-    if (res.ok) {
-      refetch();
-    }
+    if (res.ok) refetch();
   }
 
   return (
     <AppShell>
-      <TopBar
-        activeTab={activeTab}
-        onTabChange={handleTabChange}
-        searchQuery={query}
-        onSearchChange={setQuery}
-      />
+      <div className="flex h-[70px] items-center gap-3 px-8">
+        <Bookmark size={20} className="text-accent-pink" />
+        <h1 className="font-heading text-lg font-bold text-text-primary">
+          Favorites
+        </h1>
+      </div>
 
-      <div className="flex flex-1 flex-col gap-4 overflow-hidden px-8 pb-8">
-        <div className="flex items-start gap-4">
-          <div className="flex-1">
-            <AddClipBar onClipAdded={refetch} />
-          </div>
-          <AddNoteCard onNoteAdded={refetch} />
-        </div>
-
+      <div className="flex flex-1 flex-col overflow-hidden px-8 pb-8">
         {loading ? (
           <div className="flex flex-1 items-center justify-center">
             <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent-pink border-t-transparent" />
+          </div>
+        ) : clips.length === 0 ? (
+          <div className="flex flex-1 items-center justify-center">
+            <div className="text-center">
+              <Bookmark size={40} className="mx-auto mb-3 text-text-muted" />
+              <p className="font-heading text-lg font-bold text-text-secondary">
+                No favorites yet
+              </p>
+              <p className="mt-2 font-body text-sm text-text-muted">
+                Hover over any clip and click the bookmark icon to add it here
+              </p>
+            </div>
           </div>
         ) : (
           <MasonryGrid
@@ -94,7 +79,7 @@ export default function DashboardPage() {
             onClipClick={setSelectedClip}
             onClipDelete={handleDelete}
             onToggleFavorite={handleToggleFavorite}
-            onSendToVault={handleToggleVault}
+            onSendToVault={handleSendToVault}
           />
         )}
       </div>
