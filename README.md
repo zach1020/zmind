@@ -11,7 +11,7 @@ Save links, notes, and full-page archives. Chat with your collection using Claud
 
 https://github.com/user-attachments/assets/demo.mp4
 
-<video src="demo.mp4" width="100%" autoplay loop muted></video>
+
 
 ## Features
 
